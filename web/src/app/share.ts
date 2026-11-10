@@ -30,7 +30,8 @@ const isPreferences = (value: unknown): value is Preferences => {
     typeof candidate.language === "undefined" ||
     candidate.language === "system" ||
     candidate.language === "en" ||
-    candidate.language === "es";
+    candidate.language === "es" ||
+    candidate.language === "zh";
   const generateStyleValid = typeof candidate.generateStyle === "undefined" || typeof candidate.generateStyle === "string";
   return (
     typeof candidate.theme === "string" &&

@@ -5,6 +5,10 @@
 <h1 align="center">Palette Studio</h1>
 
 <p align="center">
+  <strong>English</strong> | <a href="README.zh-CN.md">简体中文</a>
+</p>
+
+<p align="center">
   <strong>Import, edit, and export palettes across Procreate, Adobe, and GIMP formats.</strong>
   <br />
   <a href="https://palettes.web.app/"><strong>Open Web App</strong></a> •

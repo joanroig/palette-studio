@@ -59,7 +59,7 @@ service cloud.firestore {
         && pref.motion is string
         && pref.motion in ['system', 'on', 'off']
         && pref.language is string
-        && pref.language in ['system', 'en', 'es'];
+        && pref.language in ['system', 'en', 'es', 'zh'];
     }
 
     function isValidSyncDoc(data) {

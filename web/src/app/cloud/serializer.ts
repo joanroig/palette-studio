@@ -104,7 +104,7 @@ const isStoredPreferences = (value: unknown): value is StoredPreferences => {
     typeof candidate.colorNotation === "string" &&
     typeof candidate.generateStyle === "string" &&
     (candidate.motion === "system" || candidate.motion === "on" || candidate.motion === "off") &&
-    (candidate.language === "system" || candidate.language === "en" || candidate.language === "es")
+    (candidate.language === "system" || candidate.language === "en" || candidate.language === "es" || candidate.language === "zh")
   );
 };
 

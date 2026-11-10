@@ -48,7 +48,7 @@ export type Preferences = {
   colorNotation: string;
   generateStyle?: string;
   motion?: "system" | "on" | "off";
-  language?: "system" | "en" | "es";
+  language?: "system" | "en" | "es" | "zh";
 };
 
 /** Cloud sync starts with v4, so its first published schema stores every current preference. */

@@ -164,6 +164,7 @@ const en: TranslationMap = {
   "settings.language.system": "System (auto)",
   "settings.language.en": "English",
   "settings.language.es": "Spanish",
+  "settings.language.zh": "Simplified Chinese",
   "settings.format.label": "Color names",
   "settings.colorNotation.label": "Color representation",
   "settings.toggle.addBw": "Add black & white colors to all imports",
