@@ -376,6 +376,19 @@ const en: TranslationMap = {
   "licenses.meta.repository": "Repository",
   "license.title": "PolyForm Shield 1.0.0",
   "license.hint": "Local copy of the project license.",
+  "license.summary.title": "In short",
+  "license.summary.intro": "A plain-language summary of the license below.",
+  "license.summary.item1":
+    "You may use, copy and modify Palette Studio for any purpose, personal or commercial, except to compete with it.",
+  "license.summary.item2":
+    "Competing means offering a product that can substitute for Palette Studio or for a product its author provides with it, even if it is free, on another platform or built differently.",
+  "license.summary.item3":
+    'You may share copies, modified or not, as long as each one includes this license (or its link) and any "Required Notice:" lines.',
+  "license.summary.item4": "Your patent license ends if you claim in writing that the software infringes a patent.",
+  "license.summary.item5":
+    "If you break the terms, you keep your license only if you fix the problem within 32 days of being notified in writing.",
+  "license.summary.item6": "The software comes as is, with no warranty, and the author is not liable for any damages.",
+  "license.summary.note": "This summary is for convenience and is not legal advice. Only the full license text below is binding.",
   "editor.paletteName.label": "Palette name",
   "editor.paletteName.placeholder": "Palette name",
   "editor.empty": "Select a palette to preview and edit.",

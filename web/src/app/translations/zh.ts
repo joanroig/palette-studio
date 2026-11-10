@@ -370,6 +370,17 @@ const zh: TranslationMap = {
   "licenses.meta.repository": "代码仓库",
   "license.title": "PolyForm Shield 1.0.0",
   "license.hint": "项目许可证的本地副本。",
+  "license.summary.title": "简要说明",
+  "license.summary.intro": "下面是对本页英文许可证的通俗中文概括。",
+  "license.summary.item1": "你可以出于任何目的使用、复制和修改画板配色中心，个人或商业用途都可以，但不能用来和它竞争。",
+  "license.summary.item2":
+    "“竞争”指提供可以替代画板配色中心、或替代作者基于它提供的产品的产品。即使是免费的、用于其他平台的，或用不同方式开发的，也算竞争。",
+  "license.summary.item3":
+    "你可以分享副本（修改过的或未修改的），但每份副本都必须附上本许可证（或它的链接），以及所有以“Required Notice:”开头的声明。",
+  "license.summary.item4": "如果你书面声称本软件侵犯了某项专利，你获得的专利许可会立即终止。",
+  "license.summary.item5": "如果你违反了条款，只有在收到书面通知后 32 天内改正，才能继续保留许可。",
+  "license.summary.item6": "本软件按“原样”提供，不附带任何担保，作者不对任何损失承担责任。",
+  "license.summary.note": "本概括仅为方便阅读，不构成法律意见。如有出入，以下方英文许可证全文为准。",
   "editor.paletteName.label": "调色板名称",
   "editor.paletteName.placeholder": "调色板名称",
   "editor.empty": "选择一个调色板以预览和编辑。",
