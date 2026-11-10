@@ -8,6 +8,7 @@ declare global {
     desktopApi?: {
       saveZip: (options: { fileName: string; data: Uint8Array }) => Promise<{ saved: boolean; path?: string }>;
       setTheme?: (theme: string) => void;
+      setLanguage?: (language: string) => void;
       onOpenLegal?: (handler: () => void) => void;
     };
     grecaptcha?: {

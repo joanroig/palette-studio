@@ -103,7 +103,9 @@ export const applyLanguagePreference = (value: string | null | undefined, persis
   if (languageSelect) {
     languageSelect.value = normalized;
   }
-  setLanguagePreference(normalized, { notify: true });
+  const resolved = setLanguagePreference(normalized, { notify: true });
+  // The desktop app's native menu is translated in the main process, which cannot see this choice.
+  window.desktopApi?.setLanguage?.(resolved);
   if (persist) {
     persistPreferences();
   }
