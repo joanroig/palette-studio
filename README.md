@@ -198,7 +198,7 @@ The input/output folders, color naming, and optional black & white colors can be
 - **inFolder:** folder used to read the palette files.
 - **outFolder:** folder used to output the converted palettes.
 - **outFormats:** output formats as an array or comma-separated string. Use `ase`, `swatches`, `gpl`, or `all`. Defaults to `ase`.
-- **colorNameFormat:** sets the collection of color names to be used. Available namings are: _roygbiv, basic, html, x11, pantone, ntc_. See [color namer](https://github.com/colorjs/color-namer) for reference.
+- **colorNameFormat:** sets the collection of color names to be used. Available namings are: _roygbiv, basic, html, x11, pantone, ntc, chinese_. See [color namer](https://github.com/colorjs/color-namer) for reference; `chinese` gives Simplified Chinese names computed from the color itself.
 - **addBlackWhite:** if true, two extra colors will be added:
 
 <p align="center">

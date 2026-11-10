@@ -10,7 +10,7 @@ import {
   motionSelect,
   themeSelect,
 } from "./dom";
-import { getColorNotationLabel, normalizeLanguagePreference, setLanguagePreference } from "./i18n";
+import { getColorNotationLabel, normalizeLanguagePreference, setLanguagePreference, t } from "./i18n";
 import { persistPreferences } from "./persistence";
 import type { Preferences } from "./types";
 
@@ -154,7 +154,9 @@ export const setupFormatSelects = () => {
     for (const format of formats) {
       const option = document.createElement("option");
       option.value = format;
-      option.textContent = format;
+      // The key lets applyTranslations relabel the option when the language changes.
+      option.dataset.i18n = `colorNameFormat.${format}`;
+      option.textContent = t(option.dataset.i18n);
       select.appendChild(option);
     }
   };

@@ -1,3 +1,4 @@
+import { nameColorZh } from "@core/chinese-names";
 import namer from "color-namer/dist/color-namer.js";
 
 import { VALID_NAME_FORMATS } from "../config";
@@ -14,6 +15,9 @@ export const resolveNameFormat = (format: string | null | undefined) => {
 
 export const nameColor = (hex: string, format: string, fallbackIndex: number) => {
   const normalized = resolveNameFormat(format);
+  if (normalized === "chinese") {
+    return nameColorZh(hex);
+  }
   const named = namer(hex) as Record<string, Array<{ name: string }>>;
   const list = named?.[normalized];
   if (!list?.length) {

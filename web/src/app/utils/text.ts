@@ -25,7 +25,30 @@ export const truncateLabel = (value: string, maxChars: number) =>
   value.length > maxChars ? `${value.slice(0, Math.max(1, maxChars - 1)).trimEnd()}…` : value;
 
 export const toCssVarName = (name: string, index: number) => {
-  const base = sanitizeFileName(name).toLowerCase() || `color-${index + 1}`;
+  // Names with no Latin letters or digits at all (Chinese, Japanese, …) sanitize to nothing; they get
+  // the positional fallback rather than sanitizeFileName's generic "palette".
+  const ascii = /[a-z0-9]/i.test(name) ? sanitizeFileName(name).toLowerCase() : "";
+  const base = ascii || `color-${index + 1}`;
   const trimmed = base.replace(/^-+/, "");
   return /^[a-z]/i.test(trimmed) ? trimmed : `color-${trimmed}`;
+};
+
+/**
+ * One variable name per color, all distinct. Two colors can share a name ("Sky Blue" twice, or two
+ * names that sanitize alike), and a repeated key in CSS or a Tailwind config silently keeps only the
+ * last value, so later repeats get a numeric suffix instead.
+ */
+export const toUniqueCssVarNames = (names: string[]) => {
+  const used = new Set<string>();
+  return names.map((name, index) => {
+    const base = toCssVarName(name, index);
+    let candidate = base;
+    let suffix = 2;
+    while (used.has(candidate)) {
+      candidate = `${base}-${suffix}`;
+      suffix += 1;
+    }
+    used.add(candidate);
+    return candidate;
+  });
 };

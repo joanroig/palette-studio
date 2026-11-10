@@ -192,7 +192,7 @@ firebase deploy --only hosting:production
 - **inFolder：** 读取调色板文件的文件夹。
 - **outFolder：** 输出转换结果的文件夹。
 - **outFormats：** 输出格式，可以是数组，也可以是逗号分隔的字符串。可用值为 `ase`、`swatches`、`gpl` 或 `all`，默认是 `ase`。
-- **colorNameFormat：** 使用哪套颜色名称。可选：_roygbiv、basic、html、x11、pantone、ntc_。详见 [color namer](https://github.com/colorjs/color-namer)。
+- **colorNameFormat：** 使用哪套颜色名称。可选：_roygbiv、basic、html、x11、pantone、ntc、chinese_。前六种详见 [color namer](https://github.com/colorjs/color-namer)；`chinese` 是根据颜色本身计算出的简体中文色名。
 - **addBlackWhite：** 设为 true 时，会额外添加黑色和白色两种颜色：
 
 <p align="center">
