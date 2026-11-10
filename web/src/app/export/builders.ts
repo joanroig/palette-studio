@@ -1,11 +1,12 @@
 import type { Palette } from "../types";
 import { getContrastColor, getRgb255, rgbToHex } from "../utils/color";
-import { escapeMarkup, toCssVarName, truncateLabel } from "../utils/text";
+import { escapeMarkup, toUniqueCssVarNames, truncateLabel } from "../utils/text";
 
 export const buildCssExport = (palette: Palette) => {
   const lines = [":root {"];
+  const varNames = toUniqueCssVarNames(palette.colors.map((color) => color.name));
   palette.colors.forEach((color, index) => {
-    const varName = toCssVarName(color.name, index);
+    const varName = varNames[index];
     lines.push(`  --${varName}: ${rgbToHex(color.rgb).toUpperCase()};`);
   });
   lines.push("}");
@@ -14,8 +15,9 @@ export const buildCssExport = (palette: Palette) => {
 
 export const buildTailwindExport = (palette: Palette) => {
   const lines = ["module.exports = {", "  theme: {", "    extend: {", "      colors: {"];
+  const varNames = toUniqueCssVarNames(palette.colors.map((color) => color.name));
   palette.colors.forEach((color, index) => {
-    const varName = toCssVarName(color.name, index);
+    const varName = varNames[index];
     lines.push(`        "${varName}": "${rgbToHex(color.rgb).toUpperCase()}",`);
   });
   lines.push("      },");

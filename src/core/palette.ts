@@ -3,6 +3,7 @@ import namer from "color-namer/dist/color-namer.js";
 import { createSwatchesFile, readSwatchesFile } from "procreate-swatches";
 
 import { AseColor, decodeAse, encodeAse } from "./ase.js";
+import { nameColorZh } from "./chinese-names.js";
 import { VALID_NAME_FORMATS } from "./formats.js";
 import { EXTRA_PALETTE_READERS } from "./readers.js";
 
@@ -45,6 +46,9 @@ const resolveNameFormat = (format: string) => {
 
 const nameColor = (rgb: [number, number, number], format: string) => {
   const hex = `#${convert.rgb.hex([Math.round(rgb[0] * 255), Math.round(rgb[1] * 255), Math.round(rgb[2] * 255)])}`;
+  if (format === "chinese") {
+    return nameColorZh(hex);
+  }
   const named = namer(hex) as Record<string, Array<{ name: string }>>;
   const list = named[format];
   if (!list?.length) {

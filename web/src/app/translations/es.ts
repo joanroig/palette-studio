@@ -164,7 +164,15 @@ const es: TranslationMap = {
   "settings.language.system": "Sistema (auto)",
   "settings.language.en": "Inglés",
   "settings.language.es": "Español",
+  "settings.language.zh": "Chino simplificado",
   "settings.format.label": "Nombres de color",
+  "colorNameFormat.roygbiv": "ROYGBIV",
+  "colorNameFormat.basic": "Básicos",
+  "colorNameFormat.html": "HTML",
+  "colorNameFormat.x11": "X11",
+  "colorNameFormat.pantone": "Pantone",
+  "colorNameFormat.ntc": "Name That Color",
+  "colorNameFormat.chinese": "Chino (简体中文)",
   "settings.colorNotation.label": "Representación de color",
   "settings.toggle.addBw": "Añadir los colores blanco y negro a todas las importaciones",
   "cloud.title": "Nube",
@@ -370,6 +378,20 @@ const es: TranslationMap = {
   "licenses.meta.repository": "Repositorio",
   "license.title": "PolyForm Shield 1.0.0",
   "license.hint": "Copia local de la licencia del proyecto.",
+  "license.summary.title": "En resumen",
+  "license.summary.intro": "Un resumen en lenguaje sencillo de la licencia que aparece abajo.",
+  "license.summary.item1":
+    "Puedes usar, copiar y modificar Palette Studio para cualquier fin, personal o comercial, salvo para competir con él.",
+  "license.summary.item2":
+    "Competir significa ofrecer un producto que pueda sustituir a Palette Studio o a un producto que su autor ofrezca con él, aunque sea gratuito, para otra plataforma o hecho de otra manera.",
+  "license.summary.item3":
+    'Puedes compartir copias, modificadas o no, siempre que cada una incluya esta licencia (o su enlace) y las líneas "Required Notice:".',
+  "license.summary.item4": "Tu licencia de patentes termina si afirmas por escrito que el software infringe una patente.",
+  "license.summary.item5":
+    "Si incumples los términos, solo conservas la licencia si corriges el problema en los 32 días siguientes a recibir un aviso por escrito.",
+  "license.summary.item6": "El software se ofrece tal cual, sin garantía, y el autor no es responsable de ningún daño.",
+  "license.summary.note":
+    "Este resumen es solo orientativo y no constituye asesoramiento legal. Solo el texto completo de la licencia que aparece abajo es vinculante.",
   "editor.paletteName.label": "Nombre de la paleta",
   "editor.paletteName.placeholder": "Nombre de la paleta",
   "editor.empty": "Selecciona una paleta para previsualizar y editar.",

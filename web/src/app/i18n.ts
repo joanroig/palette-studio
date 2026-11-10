@@ -1,12 +1,13 @@
 import en from "./translations/en";
 import es from "./translations/es";
+import zh from "./translations/zh";
 import type { TranslationMap } from "./translations/types";
 
-export const languages = ["en", "es"] as const;
+export const languages = ["en", "es", "zh"] as const;
 export type Language = (typeof languages)[number];
 export type LanguagePreference = "system" | Language;
 
-const translations: Record<Language, TranslationMap> = { en, es };
+const translations: Record<Language, TranslationMap> = { en, es, zh };
 
 type TranslationReport = {
   baseLanguage: Language;

@@ -15,7 +15,7 @@ import {
 } from "../../web/src/app/utils/color.js";
 import { createId } from "../../web/src/app/utils/id.js";
 import { clamp, normalizeHue, randomBetween } from "../../web/src/app/utils/math.js";
-import { sanitizeFileName, toCssVarName, toTitleCase } from "../../web/src/app/utils/text.js";
+import { sanitizeFileName, toCssVarName, toTitleCase, toUniqueCssVarNames } from "../../web/src/app/utils/text.js";
 
 test("color helpers normalize and convert hex/rgb values", () => {
   assert.equal(normalizeHex("00ff00"), "#00ff00");
@@ -91,4 +91,18 @@ test("createId returns a usable identifier", () => {
   assert.equal(typeof id, "string");
   assert.ok(id.length > 0);
   assert.ok(/^([0-9a-f-]{36}|palette-)/i.test(id));
+});
+
+test("css variable names fall back to the position for names without latin characters", () => {
+  assert.equal(toCssVarName("天蓝", 2), "color-3");
+});
+
+test("css variable names stay unique when color names repeat", () => {
+  assert.deepEqual(toUniqueCssVarNames(["Sky Blue", "Sky Blue", "sky-blue", "天蓝", "天蓝"]), [
+    "sky-blue",
+    "sky-blue-2",
+    "sky-blue-3",
+    "color-4",
+    "color-5",
+  ]);
 });

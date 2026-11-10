@@ -4,6 +4,8 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import { MENU_LABELS, resolveMenuLanguage, type MenuLanguage } from "./menu-labels.js";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isDev = Boolean(process.env.VITE_DEV_SERVER_URL);
 
@@ -84,81 +86,85 @@ const openModal = (channel: "open-legal") => {
   targetWindow.webContents.send(channel);
 };
 
+let menuLanguage: MenuLanguage = "en";
+
 const showAboutDialog = async () => {
+  const labels = MENU_LABELS[menuLanguage];
   await dialog.showMessageBox({
     type: "info",
-    title: "About Palette Studio",
-    message: "Palette Studio",
-    detail: `Version ${app.getVersion()}\nImport, edit, and export palettes across Procreate, Adobe, and GIMP formats.`,
-    buttons: ["OK"],
+    title: labels.about,
+    message: labels.aboutAppName,
+    detail: labels.aboutDetail.replace("{version}", app.getVersion()),
+    buttons: [labels.ok],
   });
 };
 
 const createAppMenu = () => {
   const isMac = process.platform === "darwin";
+  const labels = MENU_LABELS[menuLanguage];
   const menuTemplate = [
     {
-      label: "File",
+      label: labels.file,
       submenu: [
         {
-          label: "Open Web App",
+          label: labels.openWebApp,
           click: () => openExternal(APP_LINKS.webApp),
         },
         {
-          label: "Download Desktop",
+          label: labels.downloadDesktop,
           click: () => openExternal(APP_LINKS.releases),
         },
         {
-          label: "View Source on GitHub",
+          label: labels.viewSource,
           click: () => openExternal(APP_LINKS.repo),
         },
         { type: "separator" },
         ...(isMac
           ? [{ role: "hide" }, { role: "hideOthers" }, { role: "unhide" }, { type: "separator" }, { role: "quit" }]
-          : [{ role: "quit" }]),
+          : [{ role: "quit", label: labels.quit }]),
       ],
     },
     {
-      label: "Edit",
+      label: labels.edit,
       submenu: [
-        { role: "undo" },
-        { role: "redo" },
+        { role: "undo", label: labels.undo },
+        { role: "redo", label: labels.redo },
         { type: "separator" },
-        { role: "cut" },
-        { role: "copy" },
-        { role: "paste" },
-        { role: "selectAll" },
+        { role: "cut", label: labels.cut },
+        { role: "copy", label: labels.copy },
+        { role: "paste", label: labels.paste },
+        { role: "selectAll", label: labels.selectAll },
       ],
     },
     {
-      label: "View",
+      label: labels.view,
       submenu: [
-        { role: "reload" },
-        { role: "forceReload" },
-        { role: "toggleDevTools" },
+        { role: "reload", label: labels.reload },
+        { role: "forceReload", label: labels.forceReload },
+        { role: "toggleDevTools", label: labels.toggleDevTools },
         { type: "separator" },
-        { role: "minimize" },
+        { role: "minimize", label: labels.minimize },
         { type: "separator" },
-        { role: "resetZoom" },
-        { role: "zoomIn" },
-        { role: "zoomOut" },
+        { role: "resetZoom", label: labels.resetZoom },
+        { role: "zoomIn", label: labels.zoomIn },
+        { role: "zoomOut", label: labels.zoomOut },
         { type: "separator" },
-        { role: "togglefullscreen" },
+        { role: "togglefullscreen", label: labels.toggleFullScreen },
       ],
     },
     {
-      label: "Help",
+      label: labels.help,
       submenu: [
         {
-          label: "About Palette Studio",
+          label: labels.about,
           click: () => void showAboutDialog(),
         },
         {
-          label: "Report an Issue",
+          label: labels.reportIssue,
           click: () => openExternal(APP_LINKS.issues),
         },
         {
-          label: "Legal",
+          label: labels.legal,
           click: () => openModal("open-legal"),
         },
       ],
@@ -242,6 +248,7 @@ const createWindow = () => {
 };
 
 app.whenReady().then(() => {
+  menuLanguage = resolveMenuLanguage(undefined, app.getLocale());
   createAppMenu();
   createWindow();
   app.on("activate", () => {
@@ -275,4 +282,14 @@ ipcMain.on("set-theme", (event, theme: unknown) => {
     return;
   }
   targetWindow.setBackgroundColor(getThemeBackground(typeof theme === "string" ? theme : "system"));
+});
+
+// The web UI reports its language once it has loaded and whenever the user changes it.
+ipcMain.on("set-language", (_event, language) => {
+  const next = resolveMenuLanguage(language, app.getLocale());
+  if (next === menuLanguage) {
+    return;
+  }
+  menuLanguage = next;
+  createAppMenu();
 });
